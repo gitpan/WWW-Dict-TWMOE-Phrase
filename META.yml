@@ -1,0 +1,11 @@
+abstract: TWMOE Chinese Phrase Dictionary interface.
+author: Kang-min Liu, C<< <gugod at gugod.org> >>
+distribution_type: module
+generated_by: Module::Install version 0.63
+license: perl
+name: WWW-Dict-TWMOE-Phrase
+no_index: 
+  directory: 
+    - inc
+    - t
+version: 0.01
