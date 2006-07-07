@@ -1,5 +1,10 @@
 # Revision history for WWW-Dict-TWMOE-Phrase
 
+version: 0.02
+date:    Sat Jul  8 00:14:00 CST 2006
+changes:
+- Forgot to put dependency info in Makefile.PL
+
 version: 0.01
 date:    Fri Jul  7 23:23:16 CST 2006
 changes:
