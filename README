@@ -15,6 +15,9 @@ To install this module, run the following commands:
     make test
     make install
 
+This would also install a 'dict-twmoe' script that you can run from
+command line and retrieve phrase definitions. Please notice that this
+script assumes you use a utf8 terminal.
 
 SUPPORT AND DOCUMENTATION
 

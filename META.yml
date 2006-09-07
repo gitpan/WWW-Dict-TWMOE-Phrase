@@ -3,7 +3,7 @@ author: Kang-min Liu, C<< <gugod at gugod.org> >>
 build_requires: 
   Test::More: 0
 distribution_type: module
-generated_by: Module::Install version 0.63
+generated_by: Module::Install version 0.64
 license: perl
 name: WWW-Dict-TWMOE-Phrase
 no_index: 
@@ -11,8 +11,9 @@ no_index:
     - inc
     - t
 requires: 
+  Class::Field: 0
   Encode: 0
   HTML::TableExtract: 0
   HTML::TagParser: 0
   WWW::Mechanize: 0
-version: 0.02
+version: 0.03

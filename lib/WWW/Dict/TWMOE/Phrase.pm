@@ -16,15 +16,16 @@ WWW::Dict::TWMOE::Phrase - TWMOE Chinese Phrase Dictionary interface.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 const dict_url => 'http://140.111.34.46/dict/';
 
 field ua => -init => 'WWW::Mechanize->new()';
+field word => '';
 
 sub new {
     my $class = shift;
@@ -45,9 +46,10 @@ sub new {
 
 define() method look up the definition of $word from twmoe dict
 server. The return value is an array of definitions, each definition
-is a hash with 5 possible keys: "zuin_form_1", "zuin_form_2", "synonym",
-"antonym", "definition". The values to these keys are directly copied from
-web server.
+is a hash with 6 possible keys: "phrase", "zuin_form_1",
+"zuin_form_2", "synonym", "antonym", "definition". The values to these
+keys are directly copied from web server, except for "phrase", which
+represent the actually phrase of this definition.
 
 =cut
 
@@ -56,7 +58,10 @@ sub define {
     my $word = shift;
     my $def = [];
     my $ua = $self->ua;
+
+    $self->word($word);
     $word = '^' . Encode::encode("big5",$word) . '$';
+
     $ua->get($self->dict_url);
     $ua->submit_form( form_number => 1,
                       fields => {
@@ -72,7 +77,7 @@ sub define {
         my $attr = $elem->attributes;
         next unless ( $attr->{href} =~ /^GetContent.cgi/ );
         $ua->get($attr->{href});
-        push @$def, $self->parse_content( Encode::decode('big5',$ua->content) );
+        push @$def, $self->parse_content( Encode::decode('big5',$ua->content ));
         $ua->back();
     }
     return $def;
@@ -88,6 +93,8 @@ function.
 =cut
 
 sub parse_content {
+    use encoding 'utf8';
+
     my $self = shift;
     my $content = shift;
     my $def = {};
@@ -100,7 +107,11 @@ sub parse_content {
             $row->[0] = $1;
         }
         $row->[0] = $self->inflect($row->[0]);
-        $def->{$row->[0]} = $row->[1];
+        if ( $row->[0] =~ /【(.+)】/ ) {
+            $def->{phrase} = $1;
+        } else {
+            $def->{$row->[0]} = $row->[1];
+        }
     }
     return $def;
 }
