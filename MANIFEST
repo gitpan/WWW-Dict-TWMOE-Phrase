@@ -20,4 +20,6 @@ README
 t/00-basic.t
 t/00-load.t
 t/01-pasre-content.t
+t/02-base.t
+t/03-loadable.t
 t/content.html

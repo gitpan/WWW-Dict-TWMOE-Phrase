@@ -2,6 +2,9 @@ package WWW::Dict::TWMOE::Phrase;
 
 use warnings;
 use strict;
+use v5.8.0;
+
+use base 'WWW::Dict';
 
 use HTML::TagParser;
 use HTML::TableExtract;
@@ -16,11 +19,11 @@ WWW::Dict::TWMOE::Phrase - TWMOE Chinese Phrase Dictionary interface.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 const dict_url => 'http://140.111.34.46/dict/';
 

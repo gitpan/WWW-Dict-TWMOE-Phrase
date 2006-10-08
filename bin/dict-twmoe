@@ -18,9 +18,9 @@ for(@$definition) {
         if $_->{zuin_form_1};
     print "注音二式：$_->{zuin_form_2}\n"
             if $_->{zuin_form_2};
-    print "同義字：$_>{synonym}\n"
+    print "同義字：$_->{synonym}\n"
         if $_->{synonym};
-    print "同義字：$_>{antonym}\n"
+    print "同義字：$_->{antonym}\n"
         if $_->{antonym};
     print "\n解釋：\n\t$_->{definition}\n\n";
 }
