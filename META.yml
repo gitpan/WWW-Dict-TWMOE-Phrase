@@ -18,4 +18,4 @@ requires:
   WWW::Dict: 0.0.1
   WWW::Mechanize: 0
   perl: 5.8.0
-version: 0.04
+version: 0.05

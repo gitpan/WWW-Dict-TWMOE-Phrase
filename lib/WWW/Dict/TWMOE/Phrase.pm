@@ -19,22 +19,16 @@ WWW::Dict::TWMOE::Phrase - TWMOE Chinese Phrase Dictionary interface.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 const dict_url => 'http://140.111.34.46/dict/';
 
 field ua => -init => 'WWW::Mechanize->new()';
 field word => '';
-
-sub new {
-    my $class = shift;
-    my $self = {};
-    return bless $self, $class;
-}
 
 =head1 SYNOPSIS
 
@@ -183,11 +177,9 @@ L<http://search.cpan.org/dist/WWW-Dict-TWMOE-Phrase>
 
 =back
 
-=head1 ACKNOWLEDGEMENTS
-
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006 Kang-min Liu, all rights reserved.
+Copyright 2006,2007 Kang-min Liu, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
